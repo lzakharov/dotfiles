@@ -1,0 +1,16 @@
+[user]
+	name = Lev Zakharov
+	email = l.j.zakharov@gmail.com
+[core]
+	editor = vi
+	excludesfile = ~/.gitignore_global
+[merge]
+	tool = vimdiff
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
