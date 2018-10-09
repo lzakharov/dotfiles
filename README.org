@@ -1,3 +1,8 @@
 * dotfiles
 
 My OS X dotfiles.
+
+** Install
+   #+BEGIN_SRC bash
+   source install.sh
+   #+END_SRC
