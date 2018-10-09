@@ -1,3 +1,5 @@
+(server-start)
+
 (require 'package)
 (add-to-list 'package-archives
        '("melpa" . "http://melpa.org/packages/") t)
@@ -11,10 +13,21 @@
 (setq user-full-name "Lev Zakharov"
       user-mail-address "l.j.zakharov@gmail.com")
 
+(setq default-frame-alist '((width . 100) (height . 60)))
+
+
+;; Theme
+;; --------------------------------------------------------------------
+(use-package atom-one-dark-theme)
+(use-package smart-mode-line
+  :config
+  (setq sml/no-confirm-load-theme t
+        sml/theme 'respectful)
+  (sml/setup))
+
+
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------------------------------------
-(load-theme 'wombat)
-
 (setq inhibit-startup-message t)      ;; hide the startup message
 (tool-bar-mode -1)                    ;; disable the tool bar
 (scroll-bar-mode -1)                  ;; disable the scroll bar
@@ -58,5 +71,23 @@
 (use-package windmove
   :config
   (windmove-default-keybindings))
+
+
+;; Org
+;; --------------------------------------------------------------------
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+
+;; Autocompletion
+;; --------------------------------------------------------------------
+(use-package company
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 3)
+  (global-company-mode t))
+
 
 ;; init.el ends here
