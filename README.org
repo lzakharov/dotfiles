@@ -4,5 +4,6 @@ My OS X dotfiles.
 
 ** Install
    #+BEGIN_SRC bash
+   git clone git@github.com:lzakharov/dotfiles.git ~/.config
    source install.sh
    #+END_SRC

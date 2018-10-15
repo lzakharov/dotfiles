@@ -13,7 +13,30 @@
 (setq user-full-name "Lev Zakharov"
       user-mail-address "l.j.zakharov@gmail.com")
 
-(setq default-frame-alist '((width . 100) (height . 60)))
+(setq default-frame-alist '((width . 156) (height . 50)))
+
+
+;; Publishing
+;; --------------------------------------------------------------------
+(require 'ox-publish)
+(setq org-publish-project-alist
+      '(("org-notes"
+        :base-directory "~/Drive/org/"
+        :base-extension "org"
+        :publishing-directory "~/Programming/blog/"
+        :recursive t
+        :publishing-function org-html-publish-to-html
+        :headline-label 4
+        :auto-preamble t)
+
+        ("org-static"
+         :base-directory "~/org/"
+         :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+         :publishing-directory "~/Programming/blog/"
+         :recursive t
+         :publishing-function org-publish-attachment)
+
+        ("org" :components ("org-notes" "org-static"))))
 
 
 ;; Theme
@@ -89,5 +112,13 @@
   (setq company-minimum-prefix-length 3)
   (global-company-mode t))
 
+;; Go
+;; --------------------------------------------------------------------
+(use-package go-mode
+  :config
+  (add-hook 'before-save-hook #'gofmt-before-save)
+  (add-hook 'go-mode-hook 'flycheck-mode)
+  (add-hook 'go-mode-hook 'dumb-jump-mode)
+  (setq go-packages-function 'go-packages-go-list))
 
 ;; init.el ends here
